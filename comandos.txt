@@ -1,0 +1,1 @@
+python main.py -p SimpleSurvivorProblem -f dfs -h manhattanHeuristic -l tinyHouse
