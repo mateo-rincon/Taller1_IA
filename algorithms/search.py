@@ -97,6 +97,40 @@ def breadthFirstSearch(problem: SearchProblem):
     """
     Search the shallowest nodes in the search tree first.
     """
+    #PROMPT: considerando el taller que te subi anteriormente, cree el siguiente codigo de BFS. Ayudame a modificarlo para cumplir con el enunciado.
+    """def breadthFirstSearch(problem: SearchProblem):
+    fila = utils.Queue()
+    visited = set()
+    start_state= problem.getStartState()
+    fila.push((start_state, []))
+    actions = []
+    
+    print("Start:", problem.getStartState())
+    print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
+    print("Start's successors:", problem.getSuccessors(problem.getStartState()))
+    
+    while not fila.isEmpty():
+        state, actions = fila.pop()
+        
+        posibleObjetivo = problem.isGoalState(state)
+        if posibleObjetivo == True:
+            return actions
+            print("llegué")
+        
+        else:
+            if state not in visited:
+                visited.add(state)
+        
+            sucesores = problem.getSuccessors(state)
+            for successor, action, cost in sucesores:
+                if successor not in visited:
+                    visited.add(successor)
+                    actions = actions + action
+                    fila.push((successor, actions))
+                    
+    return []
+    """
+    
     # TODO: Add your code here
     fila = utils.Queue()
     visited = set()
@@ -125,7 +159,41 @@ def uniformCostSearch(problem: SearchProblem):
     """
     Search the node of least total cost first.
     """
-
+    #PROMPT: considerando el taller que te subi anteriormente, cree el siguiente codigo de uniformCostSearch. Ayudame a modificarlo para cumplir con el enunciado.
+    """def uniformCostSearch(problem: SearchProblem):
+    fila = utils.PriorityQueue()
+    visited = set()
+    start_state= problem.getStartState()
+    fila.push((start_state, [], 0), 0)
+    actions = []
+    
+    print("Start:", problem.getStartState())
+    print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
+    print("Start's successors:", problem.getSuccessors(problem.getStartState()))
+    
+    
+    while not fila.isEmpty():
+        state, actions, costo = fila.pop()
+        
+        posibleObjetivo = problem.isGoalState(state)
+        if posibleObjetivo == True:
+            return actions
+            print("llegué")
+        
+        else:
+            if state not in visited:
+                visited.add(state)
+        
+            sucesores = problem.getSuccessors(state)
+            for successor, action, cost in sucesores:
+                if successor not in visited:
+                    visited.add(successor)
+                    costs = costo + cost
+                    actions = actions + action
+                    fila.push((successor, actions, cost), costs)
+                
+    return []
+    """
     # TODO: Add your code here
     fila = utils.PriorityQueue()
     visited = set()
@@ -155,6 +223,43 @@ def uniformCostSearch(problem: SearchProblem):
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """
     Search the node that has the lowest combined cost and heuristic first.
+    """
+    #PROMPT: considerando el taller que te subi anteriormente, cree el siguiente codigo de aStarSearch. Ayudame a modificarlo para cumplir con el enunciado.
+    """def aStarSearch(problem: SearchProblem):
+    fila = utils.PriorityQueue()
+    visited = set()
+    start_state= problem.getStartState()
+    fila.push((start_state, [], 0), 0)
+    actions = []
+    
+    print("Start:", problem.getStartState())
+    print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
+    print("Start's successors:", problem.getSuccessors(problem.getStartState()))
+    
+    
+    while not fila.isEmpty():
+        state, actions, costo = fila.pop()
+        
+        posibleObjetivo = problem.isGoalState(state)
+        if posibleObjetivo == True:
+            return actions
+            print("llegué")
+        
+        else:
+            if state not in visited:
+                visited.add(state)
+        
+            sucesores = problem.getSuccessors(state)
+            for successor, action, cost in sucesores:
+                if successor not in visited:
+                    visited.add(successor)
+                    CostoHeuristica = costo + heuriscic(successor, problem)
+                    costs = costo + cost
+                    actions = actions + action
+                    fila.push((successor, actions, costs), CostoHeuristica)
+                    
+    return []
+
     """
     # TODO: Add your code here
     fila = utils.PriorityQueue()
